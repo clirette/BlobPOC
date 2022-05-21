@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<script>
+    const onClick = async () => {
+        const fileName = document.getElementById('filename').value
+        const title = document.getElementById('title').value
+        const response = await fetch(`https://localhost:7134/Home/GetPDFURL?filename=${fileName}&title=${title}`)
+        const message = await response.text()
+        console.log(message)
+        window.open(message)
+    }
+</script>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div>
+    <h1>hello world</h1>
+    
+    <label for="filename">File Name</label>
+    <input type="text" id="filename">
+
+    <label for="title">Title</label>
+    <input type="text" id="title">
+    <button onclick="onClick()">Get PDF</button>
+</div>
